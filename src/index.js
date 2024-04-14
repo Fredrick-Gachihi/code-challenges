@@ -1,10 +1,112 @@
 // Your code here
+// const localHostUrl = 'http://localhost:3000';
+// const movieDetailsEl = document.querySelector('.movie-details');
+// const filmListEl = document.querySelector('#films');
+
+// function getMovieDetails(movieId) {
+//   fetch(`${localHostUrl}/films/${movieId}`)
+//     .then(response => response.json())
+//     .then(data => {
+//       const { poster, title, runtime, showtime, ticketsSold, capacity } = data;
+//       const availableTickets = capacity - ticketsSold;
+
+//       movieDetailsEl.innerHTML = `
+//         <img src="${poster}" alt="${title} poster" />
+//         <h2>${title}</h2>
+//         <p>Runtime: ${runtime} minutes</p>
+//         <p>Showtime: ${showtime}</p>
+//         <p>Available Tickets: ${availableTickets}</p>
+//         <button data-movie-id="${movieId}" ${availableTickets === 0 ? 'disabled' : ''}>${availableTickets === 0 ? 'Sold Out' : 'Buy Ticket'}</button>
+//       `;
+//     })
+//     .catch(error => {
+//       console.error('Failed to fetch movie details:', error);
+//       // You can display a user-friendly error message here
+//     });
+// }
+
+// function getAllFilms() {
+//   fetch(`${localHostUrl}/films`)
+//     .then(response => response.json())
+//     .then(data => {
+//       data.forEach(film => {
+//         const filmEl = document.createElement('li');
+//         filmEl.classList.add('film', 'item');
+//         filmEl.textContent = film.title;
+//         filmEl.dataset.movieId = film.id;
+//         filmListEl.appendChild(filmEl);
+//       });
+//     })
+//     .catch(error => {
+//       console.error('Failed to fetch films:', error);
+//       // You can display a user-friendly error message here
+//     });
+// }
+
+// function buyTicket(movieId) {
+//   fetch(`${localHostUrl}/films/${movieId}`, {
+//     method: 'PATCH',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({ ticketsSold: ticketsSold + 1 }), // Ensure property name matches server-side
+//   })
+//     .then(response => {
+//       if (response.ok) {
+//         getMovieDetails(movieId);
+//       } else {
+//         console.error('Failed to buy ticket:', error);
+//         // You can display a user-friendly error message here
+//       }
+//     })
+//     .catch(error => {
+//       console.error('Failed to update ticket:', error);
+//       // You can display a user-friendly error message here
+//     });
+// }
+
+// function deleteFilm(movieId) {
+//   fetch(`${localHostUrl}/films/${movieId}`, {
+//     method: 'DELETE',
+//   })
+//     .then(response => {
+//       if (response.ok) {
+//         const filmEl = document.querySelector(`[data-movie-id="${movieId}"]`); // Use template literal for selector
+//         filmListEl.removeChild(filmEl);
+//       } else {
+//         console.error('Failed to delete film:', error);
+//         // You can display a user-friendly error message here
+//       }
+//     })
+//     .catch(error => {
+//       console.error('Failed to delete film:', error);
+//       // You can display a user-friendly error message here
+//     });
+// }
+
+// filmListEl.addEventListener('click', (event) => {
+//   if (event.target.tagName === 'LI') {
+//     const movieId = event.target.dataset.movieId;
+//     getMovieDetails(movieId);
+//   }
+// });
+
+// movieDetailsEl.addEventListener('click', (event) => {
+//   if (event.target.tagName === 'BUTTON') {
+//     const movieId = event.target.dataset.movieId;
+//     buyTicket(movieId);
+//   }
+// });
+
+// getMovieDetails(1);
+// // getAllFilms();
+
 const localHostUrl = 'http://localhost:3000';
 const movieDetailsEl = document.querySelector('.movie-details');
 const filmListEl = document.querySelector('#films');
 
 function getMovieDetails(movieId) {
-  fetch(`${localHostUrl}/films/${movieId}`)
+  fetch(${localHostUrl}/films/${movieId})
     .then(response => response.json())
     .then(data => {
       const { poster, title, runtime, showtime, ticketsSold, capacity } = data;
@@ -23,7 +125,7 @@ function getMovieDetails(movieId) {
 }
 
 function getAllFilms() {
-  fetch(`${localHostUrl}/films`)
+  fetch(${localHostUrl}/films)
     .then(response => response.json())
     .then(data => {
       data.forEach(film => {
@@ -38,7 +140,7 @@ function getAllFilms() {
 }
 
 function buyTicket(movieId) {
-  fetch(`${localHostUrl}/films/${movieId}`, {
+  fetch(${localHostUrl}/films/${movieId}, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -57,12 +159,12 @@ function buyTicket(movieId) {
 }
 
 function deleteFilm(movieId) {
-  fetch(`${localHostUrl}/films/${movieId}`, {
+  fetch(${localHostUrl}/films/${movieId}, {
     method: 'DELETE',
   })
     .then(response => {
       if (response.ok) {
-        const filmEl = document.querySelector(`[data-movie-id="${movieId}"]`);
+        const filmEl = document.querySelector([data-movie-id="${movieId}"]);
         filmListEl.removeChild(filmEl);
       } else {
         console.error('Failed to delete film');
